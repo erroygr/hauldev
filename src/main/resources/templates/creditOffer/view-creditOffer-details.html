@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Кредитное предложение</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/head :: head"></header>
+
+<div class="container mt-5">
+    <div th:each="el : ${creditOffer}" class="alert alert-info mt-2">
+        <h3>ФИО клиента</h3>
+        <h3 th:text="${el.client.FIO}"></h3>
+        <h3>Телефон клиента</h3>
+        <h3 th:text="${el.client.phone}"></h3>
+        <h3>Кредитный лимит</h3>
+        <h3 th:text="${el.credit.creditLimit}"></h3>
+        <h3>Процентная ставка</h3>
+        <h3 th:text="${el.credit.interestRate}"></h3>
+        <h3>Сумма кредита</h3>
+        <h3 th:text="${el.loanAmount}"></h3>
+        <a th:href="'/view-creditOffer/'+${el.id} + '/edite'" class="btn btn-warning">Редактировать</a><br><br>
+        <form th:action="'/view-creditOffer/'+${el.id} + '/remove'" method="post">
+            <button class="btn btn-warning" type="submit">Удалить</button>
+        </form>
+
+    </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Клиенты</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/head :: head"></header>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1>Клиенты</h1>
+    <br>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>ФИО</th>
+            <th>Телефон</th>
+            <th>Почта</th>
+            <th>Номер паспорта</th>
+        </tr>
+        </thead>
+            <tbody th:each="el : ${clients}">
+            <tr>
+            <td th:text="${el.FIO}"></td>
+            <td th:text="${el.phone}"></td>
+            <td th:text="${el.email}"></td>
+            <td th:text="${el.numberPassport}"></td>
+            <td><a th:href="'/view-client/'+${el.id}" class="btn btn-outline-primary">Изменить</a></td></tr>
+            </tbody>
+            </table>
+
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

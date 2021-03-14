@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Добавить клиента</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/head :: head"></header>
+
+<div class="container mt-5 mb-5">
+    <h1>Добавить клиента</h1>
+    <form action="/view-client/add" method="post" enctype="multipart/form-data">
+        <input type="text" name="FIO" placeholder="Введите ФИО" class="form-control"><br>
+        <input type="text" name="phone" placeholder="Введите телефон" class="form-control"><br>
+        <input type="text" name="email" placeholder="Введите электронну почту" class="form-control"><br>
+        <input type="text" name="numberPassport" placeholder="Введите номер паспорта" class="form-control"><br>
+        <br><br>
+
+        <button type="submit" class="btn btn-outline-primary">Подтвердить добавление</button>
+    </form>
+</div>
+
+
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование данных банка</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/head :: head"></header>
+
+<div class="container mt-5 mb-5">
+    <h1>Редактирование данных банка</h1>
+    <div th:each="el : ${bank}">
+        <form method="post">
+
+            <label>Выберете клиента из списка</label>
+            <select name="client" class="form-control">
+                <option th:each="el : ${clients}" th:value="${el.getFIO()}" th:text="${el.getFIO()}"></option>
+            </select>
+            <br><br>
+            <label>Выберете кредитный лимит</label>
+            <select name="credit" class="form-control">
+                <option th:each="el : ${credits}" th:value="${el.getCreditLimit()}" th:text="${el.getCreditLimit()}"></option>
+            </select>
+
+
+            <button type="submit" class="btn btn-success">Обновить данные</button>
+        </form>
+    </div>
+</div>
+
+
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

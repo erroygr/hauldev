@@ -1,0 +1,8 @@
+table {
+    border: 1px solid #265b5d;
+    /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+    width: 600px;
+}
+td:first-child {
+    width: 50%;
+}
