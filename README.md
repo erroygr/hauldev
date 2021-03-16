@@ -5,4 +5,4 @@
 MAMP для сервера бд .
 
 Скришоты:
-![](https://skr.sh/s76aqC8hmVQ?a)
+![alt text](https://skr.sh/s76aqC8hmVQ?a)
