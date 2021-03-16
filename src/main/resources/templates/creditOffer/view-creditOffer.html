@@ -24,12 +24,12 @@
             <tr>
             <td th:text="${el.client.getFIO()}"></td>
             <td th:text="${el.credit.getCreditLimit()}"></td>
+                <td th:text="${el.loanAmount}"></td>
             <td><a th:href="'/view-creditOffer/'+${el.id}" class="btn btn-outline-primary">Изменить</a></td></tr>
             </tbody>
             </table>
 
 </div>
 
-<div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

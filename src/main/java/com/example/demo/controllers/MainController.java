@@ -1,9 +1,7 @@
 package com.example.demo.controllers;
 
-import com.example.demo.model.Bank;
-import com.example.demo.model.Client;
-import com.example.demo.model.Credit;
-import com.example.demo.model.CreditOffer;
+import com.example.demo.calc.LoanPayment;
+import com.example.demo.model.*;
 import com.example.demo.repo.BankRepository;
 import com.example.demo.repo.CreditOfferRepository;
 import com.example.demo.repo.CreditRepository;
@@ -34,6 +32,8 @@ public class MainController {
     private BankRepository bankRepository;
     @Autowired
     private CreditOfferRepository creditOfferRepository;
+
+    private LoanPay loanPay =new LoanPay();
 
 
     //GET POST CLIENT
@@ -365,4 +365,41 @@ public class MainController {
         creditOfferRepository.delete(creditOffer);
         return "redirect:/view-creditOffer";
     }
+
+    //////
+
+    @GetMapping("/calcCreditOffers")
+    public String calcGetCreditOffer(Model model){
+        model.addAttribute("everyMonthProcents",loanPay.getEveryMonthProcents());
+        model.addAttribute("annuitantPaymentSum",loanPay.getAnnuitantPaymentSum());
+        model.addAttribute("percentPayments",loanPay.getPercentPayments());
+        model.addAttribute("bodyPayments",loanPay.getBodyPayments());
+
+        return "creditOffer/calcCreditOffer";
+    }
+
+    @PostMapping("/calcCreditOffer")
+    public String calcPostCreditOffer(@RequestParam String loanAmount,
+                                      @RequestParam String interestRate,
+                                      @RequestParam String tern,
+                                      Model model) {
+
+        loanPay.setEveryMonthProcents(LoanPayment.getEveryMonthProcents(Float.parseFloat(interestRate)));
+
+
+        loanPay.setAnnuitantPaymentSum(LoanPayment.getAnnuitantPaymentSum(Float.parseFloat(interestRate),
+                Float.parseFloat(tern)));
+
+
+        loanPay.setPercentPayments(LoanPayment.getPercentPayments(Float.parseFloat(loanAmount),
+                Float.parseFloat(interestRate), Float.parseFloat(tern)));
+
+
+        loanPay.setBodyPayments(LoanPayment.getBodyPayments(Float.parseFloat(loanAmount),
+                Float.parseFloat(interestRate), Float.parseFloat(tern)));
+
+        return "redirect:/calcCreditOffers";
+    }
+
+    //////
 }

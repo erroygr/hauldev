@@ -11,16 +11,29 @@
 
 <div class="container mt-5">
     <div th:each="el : ${creditOffer}" class="alert alert-info mt-2">
-        <h3>ФИО клиента</h3>
+        <h3>ФИО клиента:</h3>
         <h3 th:text="${el.client.FIO}"></h3>
-        <h3>Телефон клиента</h3>
+        <h3>Телефон клиента:</h3>
         <h3 th:text="${el.client.phone}"></h3>
-        <h3>Кредитный лимит</h3>
+        <h3>Кредитный лимит по предложению: </h3>
         <h3 th:text="${el.credit.creditLimit}"></h3>
-        <h3>Процентная ставка</h3>
+        <h3>Процентная ставка (годовая):</h3>
         <h3 th:text="${el.credit.interestRate}"></h3>
-        <h3>Сумма кредита</h3>
+        <h3>Сумма кредита:</h3>
         <h3 th:text="${el.loanAmount}"></h3>
+
+        <h1>Расчет деталей кредитного предложения</h1>
+        <form action="/calcCreditOffer" method="post" enctype="multipart/form-data">
+            <label>Сумма кредита:</label>
+            <input type="text" name="loanAmount" th:value="${el.loanAmount}" class="form-control" readonly><br>
+            <label>Процентная ставка (годовая):</label>
+            <input type="text" name="interestRate" th:value="${el.credit.interestRate}" class="form-control" readonly><br>
+            <label>Срок кредитования в годах:</label>
+            <input type="text" name="tern" placeholder="Введите срок кредитования (в годах)" class="form-control"><br>
+            <br><br>
+            <button class="btn btn-warning" type="submit">Расчет</button>
+            <br><br>
+        </form>
         <a th:href="'/view-creditOffer/'+${el.id} + '/edite'" class="btn btn-warning">Редактировать</a><br><br>
         <form th:action="'/view-creditOffer/'+${el.id} + '/remove'" method="post">
             <button class="btn btn-warning" type="submit">Удалить</button>
@@ -29,6 +42,5 @@
     </div>
 </div>
 
-<div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

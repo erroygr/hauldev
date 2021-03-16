@@ -1,25 +1,86 @@
 <div th:fragment="head">
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <h5 class="my-0 mr-md-auto font-weight-normal">Сервис заявок</h5>
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" href="/">Главная</a>
-            <a class="p-2 text-dark" href="#">Клиенты</a>
-            <a class="p-2 text-dark" href="/view-client/add">Добавить клиента</a>
-            <a class="p-2 text-dark" href="/view-client">Просмотр клиентов</a>
+    <style type="text/css">
+        ul {
+            list-style: none; /*убираем маркеры списка*/
+            margin: 0; /*убираем отступы*/
+            padding-left: 0; /*убираем отступы*/
+            background: #3f89e0; /*добавляем фон всему меню*/
+            height: 50px; /*задаем высоту*/
+        }
+        a {
+            text-decoration: none; /*убираем подчеркивание текста ссылок*/
+            background: #3f89e0; /*добавляем фон к пункту меню*/
+            color:#fff; /*меняем цвет ссылок*/
+            padding:0px 15px; /*добавляем отступ*/
+            font-family: arial,serif; /*меняем шрифт*/
+            line-height:50px; /*ровняем меню по вертикали*/
+            display: block;
+            border-right: 1px solid #3f89e0; /*добавляем бордюр справа*/
+            -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+            -o-transition: all 0.3s 0.01s ease;
+            -webkit-transition: all 0.3s 0.01s ease;
 
-            <a class="p-2 text-dark" href="#">Клиенты</a>
-            <a class="p-2 text-dark" href="/view-credit/add">Добавить кредит</a>
-            <a class="p-2 text-dark" href="/view-credit">Просмотр кредитов</a>
+        }
+        a:hover {
+            background: #3f89e0;/*добавляем эффект при наведении*/
+        }
+        li {
+            float:left; /*Размещаем список горизонтально для реализации меню*/
+            position:relative; /*задаем позицию для позиционирования*/
+        }
 
-            <a class="p-2 text-dark" href="#">Банк</a>
-            <a class="p-2 text-dark" href="/view-bank/add">Добавить банк</a>
-            <a class="p-2 text-dark" href="/view-bank">Просмотр банков</a>
+        /*Стили для скрытого выпадающего меню*/
+        li > ul {
+            position:absolute;
+            top:50px;
+            display:none;
+        }
 
-            <a class="p-2 text-dark" href="#">Крединое предложение</a>
-            <a class="p-2 text-dark" href="/view-creditOffer/add">Добавить кредитное предложение</a>
-            <a class="p-2 text-dark" href="/view-creditOffer">Просмотр кредитных предложений</a>
-            <!--<a class="p-2 text-dark" href="#">Поддержка</a>-->
-        </nav>
-        <a class="btn btn-outline-primary" href="#">Войти</a>
-    </div>
+        /*Делаем скрытую часть видимой*/
+        li:hover > ul {
+            display:block;
+            width:300px;  /*Задаем ширину выпадающего меню*/
+        }
+        li:hover > ul > li {
+            float:none; /*Убираем горизонтальное позиционирование*/
+        }
+    </style>
+
+        <ul>
+        <!-- Brand -->
+            <li > <a href="/">Система банка</a></li >
+
+            <!-- Dropdown -->
+            <li >
+                <a href="#" >Клиенты</a>
+                    <ul>
+                    <a href="/view-client/add">Добавить клиента</a>
+                    <a href="/view-client">Просмотр клиентов</a>
+                    </ul>
+            </li>
+        <!-- Dropdown -->
+        <li>
+            <a href="#">Кредиты</a>
+                <ul>
+                <a href="/view-credit/add">Добавить кредит</a>
+                <a href="/view-credit">Просмотр кредитов</a>
+                </ul>
+        </li>
+        <!-- Dropdown -->
+        <li>
+            <a href="#" >Банк</a>
+            <ul>
+                <a href="/view-bank/add">Добавить банк</a>
+                <a href="/view-bank">Просмотр банков</a>
+                </ul>
+        </li>
+        <!-- Dropdown -->
+        <li>
+            <a href="#">Крединое предложение</a>
+            <ul>
+                <a href="/view-creditOffer/add">Добавить кредитное предложение</a>
+                <a href="/view-creditOffer">Просмотр кредитных предложений</a>
+            </ul>
+        </li>
+        </ul>
 </div>

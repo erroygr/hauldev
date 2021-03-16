@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Расчет деталей кредита</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/head :: head"></header>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+<h3>Ежемесячная процентная ставка:</h3>
+<h3 th:text="${everyMonthProcents}"></h3>
+<h3>Аннуитетнный коэффициент:</h3>
+<h3 th:text="${annuitantPaymentSum}"></h3>
+<h3>Ежемесячный аннуитетный платеж:</h3>
+<h3 th:text="${percentPayments}"></h3>
+<h3>Переплата:</h3>
+<h3 th:text="${bodyPayments}"></h3>
+</div>
+
+<div style="text-align: center;"><a href="/view-creditOffer" class="btn btn-warning">Вернуться к просмотру кредитных предложений</a></div>
+</body>
+</html>
