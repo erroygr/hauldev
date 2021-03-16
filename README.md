@@ -3,3 +3,6 @@
 Для клиентской части использовались: html, css, js, bootstrap.
 БД: mySQL (экспорт в resources-> db ->dbclientbank).
 MAMP для сервера бд .
+
+Скришоты:
+![](https://skr.sh/s76aqC8hmVQ?a)
